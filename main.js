@@ -393,10 +393,11 @@
     );
     nodos.forEach(function (n) { io.observe(n); });
 
-    // Red de seguridad: si algo impide el observador, las cifras se ven igual
+    // Red de seguridad: si el navegador congela la animación (pestaña en
+    // segundo plano), la cifra final se escribe igual, sin contar.
     setTimeout(function () {
       nodos.forEach(function (n) {
-        if (n.textContent === "0" && n.getBoundingClientRect().top < window.innerHeight) animar(n);
+        if (n.textContent === "0") n.textContent = (Number(n.dataset.contador) || 0) + (n.dataset.sufijo || "");
       });
     }, 6000);
   }
