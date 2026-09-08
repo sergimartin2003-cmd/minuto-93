@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>MINUTO 93 — Zapas y camisetas con biografía</title>
-<meta name="description" content="Archivo de zapatillas y camisetas de fútbol de segunda mano. Cada pieza con su año, su talla real y su historia. Una unidad por talla." />
+<title>MINUTO 93 — Camisetas de fútbol con biografía</title>
+<meta name="description" content="Archivo de camisetas de fútbol de segunda mano. Cada pieza con su temporada, sus medidas reales y su historia. Una unidad por talla." />
 <meta name="theme-color" content="#f1f0ec" />
 
-<meta property="og:title" content="MINUTO 93 — Zapas y camisetas con biografía" />
-<meta property="og:description" content="Archivo de zapatillas y camisetas de fútbol de segunda mano. Pieza a pieza, sin carrito y sin prisa." />
+<meta property="og:title" content="MINUTO 93 — Camisetas de fútbol con biografía" />
+<meta property="og:description" content="Archivo de camisetas de fútbol de segunda mano. Pieza a pieza, sin carrito y sin prisa." />
 <meta property="og:type" content="website" />
 <meta property="og:image" content="assets/img/hero.webp" />
 
@@ -59,8 +59,8 @@
         <p class="kicker">01 — Archivo abierto · Barcelona</p>
         <h1 class="hero__titulo reveal" data-split="palabras">Todo lo bueno pasa en el minuto&nbsp;93.</h1>
         <p class="hero__entrada reveal">
-          Zapatillas y camisetas de fútbol que ya tuvieron una vida. Las buscamos, las revisamos
-          y contamos de dónde vienen. Una unidad por talla: cuando se va, se fue.
+          Camisetas de fútbol que ya tuvieron una vida: locales, visitantes, de portero. Las
+          buscamos, las medimos y contamos de dónde vienen. Una unidad por talla: cuando se va, se fue.
         </p>
         <div class="hero__botones reveal">
           <a class="btn btn--solido" href="#archivo">Ver el archivo</a>
@@ -80,7 +80,7 @@
     </figure>
 
     <div class="rejilla cifras">
-      <div class="cifra"><strong data-contador="8" data-sufijo="">0</strong><span class="mono">piezas en el archivo</span></div>
+      <div class="cifra"><strong data-contador="5" data-sufijo="">0</strong><span class="mono">piezas en el archivo</span></div>
       <div class="cifra"><strong data-contador="1">0</strong><span class="mono">unidad por talla</span></div>
       <div class="cifra"><strong data-contador="48" data-sufijo=" h">0</strong><span class="mono">para contestarte</span></div>
       <div class="cifra"><strong data-contador="93" data-sufijo="′">0</strong><span class="mono">el minuto que importa</span></div>
@@ -90,10 +90,10 @@
   <!-- ============ CINTA ============ -->
   <section class="cinta" aria-hidden="true">
     <div class="cinta__pista" data-marquee>
-      <span>PIEZA A PIEZA</span><i>·</i><span>SIN CARRITO</span><i>·</i><span>CADA ZAPA CON SU FICHA</span><i>·</i>
-      <span>CADA CAMISETA CON SU AÑO</span><i>·</i><span>UNA UNIDAD POR TALLA</span><i>·</i>
-      <span>PIEZA A PIEZA</span><i>·</i><span>SIN CARRITO</span><i>·</i><span>CADA ZAPA CON SU FICHA</span><i>·</i>
-      <span>CADA CAMISETA CON SU AÑO</span><i>·</i><span>UNA UNIDAD POR TALLA</span><i>·</i>
+      <span>PIEZA A PIEZA</span><i>·</i><span>SIN CARRITO</span><i>·</i><span>CADA CAMISETA CON SU FICHA</span><i>·</i>
+      <span>CADA TEMPORADA EN SU SITIO</span><i>·</i><span>UNA UNIDAD POR TALLA</span><i>·</i>
+      <span>PIEZA A PIEZA</span><i>·</i><span>SIN CARRITO</span><i>·</i><span>CADA CAMISETA CON SU FICHA</span><i>·</i>
+      <span>CADA TEMPORADA EN SU SITIO</span><i>·</i><span>UNA UNIDAD POR TALLA</span><i>·</i>
     </div>
   </section>
 
@@ -109,9 +109,9 @@
         <p class="bloque__num mono">01</p>
         <h3>Una pieza, una ficha</h3>
         <p>
-          De cada zapa y cada camiseta sabemos el año aproximado, la talla real medida en
-          centímetros y lo que le ha pasado. Si algo está gastado, sale en la foto y sale escrito.
-          Preferimos perder una venta a que abras la caja con cara rara.
+          De cada camiseta sabemos la temporada aproximada, el pecho y el largo medidos en
+          centímetros sobre la prenda en plano y lo que le ha pasado. Si algo está gastado, sale en
+          la foto y sale escrito. Preferimos perder una venta a que abras el sobre con cara rara.
         </p>
       </article>
 
@@ -142,8 +142,8 @@
         <figcaption class="mono">Regional, domingo por la tarde</figcaption>
       </figure>
       <figure class="reveal">
-        <img src="assets/img/story-2.webp" alt="Zapatillas caminando sobre el asfalto de una calle" loading="lazy" decoding="async" />
-        <figcaption class="mono">La segunda vida empieza en la calle</figcaption>
+        <img src="assets/img/p-retro-1.webp" alt="Tres camisetas de fútbol dobladas sobre el césped" loading="lazy" decoding="async" />
+        <figcaption class="mono">Lo que llega cada semana</figcaption>
       </figure>
     </div>
   </section>
@@ -155,25 +155,24 @@
         <p class="kicker">03 — El archivo</p>
         <h2 class="titulo-seccion reveal" data-split="palabras">Piezas disponibles ahora mismo.</h2>
       </div>
-      <div class="filtros" role="group" aria-label="Filtrar el archivo">
+      <!-- main.js rehace estos filtros con las categorías que tienen piezas -->
+      <div class="filtros" role="group" aria-label="Filtrar el archivo" data-filtros>
         <button type="button" class="chip is-activo" data-filtro="todo">Todo</button>
-        <button type="button" class="chip" data-filtro="zapas">Zapas</button>
-        <button type="button" class="chip" data-filtro="camiseta">Camisetas</button>
-        <span class="filtros__cuenta mono" data-cuenta>8 piezas</span>
+        <button type="button" class="chip" data-filtro="local">Local</button>
+        <button type="button" class="chip" data-filtro="visitante">Visitante</button>
+        <button type="button" class="chip" data-filtro="portero">Portero</button>
+        <span class="filtros__cuenta mono" data-cuenta>5 piezas</span>
       </div>
     </div>
 
     <!-- La cuadrícula la vuelve a dibujar main.js con el catálogo real.
          Este bloque es el respaldo para cuando el JS no carga. -->
     <div class="parrilla" data-archivo>
-      <article class="tarjeta"><a class="tarjeta__enlace" href="#buzon"><figure class="tarjeta__foto"><img src="assets/img/p-air-1.webp" alt="Zapatilla blanca de piel" loading="lazy" /></figure><div class="tarjeta__pie"><h3>Blanca de piel</h3><p class="mono">Corte bajo · 1995 — 120 €</p></div></a></article>
-      <article class="tarjeta"><a class="tarjeta__enlace" href="#buzon"><figure class="tarjeta__foto"><img src="assets/img/p-camiseta-c.webp" alt="Camiseta de fútbol roja" loading="lazy" /></figure><div class="tarjeta__pie"><h3>Roja de local</h3><p class="mono">Temporada 98/99 — 85 €</p></div></a></article>
-      <article class="tarjeta"><a class="tarjeta__enlace" href="#buzon"><figure class="tarjeta__foto"><img src="assets/img/p-run-1.webp" alt="Zapatilla de running de malla" loading="lazy" /></figure><div class="tarjeta__pie"><h3>Runner de malla</h3><p class="mono">Gris piedra · 2001 — 95 €</p></div></a></article>
+      <article class="tarjeta"><a class="tarjeta__enlace" href="#buzon"><figure class="tarjeta__foto"><img src="assets/img/p-camiseta-c.webp" alt="Camiseta de fútbol roja de local" loading="lazy" /></figure><div class="tarjeta__pie"><h3>Roja de local</h3><p class="mono">Temporada 98/99 — 85 €</p></div></a></article>
       <article class="tarjeta"><a class="tarjeta__enlace" href="#buzon"><figure class="tarjeta__foto"><img src="assets/img/p-kit-1.webp" alt="Camiseta de fútbol amarilla con escudo bordado" loading="lazy" /></figure><div class="tarjeta__pie"><h3>Visitante amarilla</h3><p class="mono">Temporada 02/03 — 70 €</p></div></a></article>
-      <article class="tarjeta"><a class="tarjeta__enlace" href="#buzon"><figure class="tarjeta__foto"><img src="assets/img/p-hi-2.webp" alt="Zapatillas de lona blanca pintadas a mano" loading="lazy" /></figure><div class="tarjeta__pie"><h3>Lona pintada a mano</h3><p class="mono">Pieza única · sin año — 65 €</p></div></a></article>
       <article class="tarjeta"><a class="tarjeta__enlace" href="#buzon"><figure class="tarjeta__foto"><img src="assets/img/p-camiseta-a.webp" alt="Camiseta de fútbol granate y azul" loading="lazy" /></figure><div class="tarjeta__pie"><h3>Granate y azul</h3><p class="mono">Temporada 06/07 — 110 €</p></div></a></article>
-      <article class="tarjeta"><a class="tarjeta__enlace" href="#buzon"><figure class="tarjeta__foto"><img src="assets/img/p-boots-1.webp" alt="Botas de fútbol de piel negra" loading="lazy" /></figure><div class="tarjeta__pie"><h3>Botas de tacos</h3><p class="mono">Piel negra · 1997 — 140 €</p></div></a></article>
       <article class="tarjeta"><a class="tarjeta__enlace" href="#buzon"><figure class="tarjeta__foto"><img src="assets/img/p-portero-1.webp" alt="Camiseta de portero verde de manga larga" loading="lazy" /></figure><div class="tarjeta__pie"><h3>Portero verde</h3><p class="mono">Manga larga · 96/97 — 95 €</p></div></a></article>
+      <article class="tarjeta"><a class="tarjeta__enlace" href="#buzon"><figure class="tarjeta__foto"><img src="assets/img/p-camiseta-b.webp" alt="Camiseta de fútbol blanca de visitante" loading="lazy" /></figure><div class="tarjeta__pie"><h3>Blanca de visitante</h3><p class="mono">Temporada 07/08 — 90 €</p></div></a></article>
     </div>
 
     <p class="archivo__nota mono">
@@ -187,8 +186,8 @@
       <p class="kicker">04 — Tallaje</p>
       <h2 class="titulo-seccion reveal" data-split="palabras">Antes de preguntar, mide.</h2>
       <p class="tallaje__intro reveal">
-        Cada ficha lleva su propio tallaje, porque una zapa de 1995 no talla como una de ahora
-        y una camiseta de portero nunca talla como una de campo. Esto es la referencia general.
+        Cada ficha lleva sus medidas propias, porque una camiseta de 1996 no talla como una de
+        ahora y una de portero nunca talla como una de campo. Esto es la referencia general.
       </p>
     </div>
     <div class="tablas" data-guias>
@@ -212,11 +211,12 @@
         </div>
 
         <div class="campo">
-          <label for="b-tipo">Qué tipo de pieza</label>
+          <label for="b-tipo">Qué equipación</label>
           <select id="b-tipo" name="tipo">
-            <option value="zapas">Zapas</option>
-            <option value="camiseta">Camiseta</option>
-            <option value="otro">Otra cosa</option>
+            <option value="local">Local</option>
+            <option value="visitante">Visitante</option>
+            <option value="portero">Portero</option>
+            <option value="entreno">Entreno</option>
           </select>
         </div>
 
@@ -228,7 +228,7 @@
 
         <div class="campo">
           <label for="b-talla">Tu talla</label>
-          <input id="b-talla" name="talla" type="text" maxlength="10" placeholder="42 · L" />
+          <input id="b-talla" name="talla" type="text" maxlength="10" placeholder="L" />
         </div>
 
         <div class="campo">
@@ -250,9 +250,9 @@
       <aside class="muro">
         <h3 class="mono">Lo que está pidiendo la gente</h3>
         <ul class="muro__lista" data-muro>
-          <li><p>Cualquier camiseta de portero de los 90 con manga larga.</p><span class="mono">Nil · camiseta · L</span></li>
-          <li><p>Runner de malla en 38 o 39, mejor si es gris.</p><span class="mono">Marta · zapas · 39</span></li>
-          <li><p>Una segunda equipación amarilla sin dorsal ni patrocinador.</p><span class="mono">Edu · camiseta · M</span></li>
+          <li><p>Cualquier camiseta de portero de los 90 con manga larga.</p><span class="mono">Nil · Portero · L</span></li>
+          <li><p>Una segunda equipación azul marino, mejor si es sin patrocinador.</p><span class="mono">Marta · Visitante · M</span></li>
+          <li><p>Camiseta a rayas de los 90, talla L, con dorsal cosido.</p><span class="mono">Edu · Local · L</span></li>
         </ul>
         <p class="muro__nota mono">
           Se revisa cada lunes. Si aparece tu pieza, te escribimos antes de publicarla.
@@ -267,7 +267,7 @@
   <div class="rejilla pie__cuerpo">
     <div class="pie__marca">
       <p class="pie__logo">MINUTO&nbsp;93</p>
-      <p>Zapas y camisetas con biografía. Barcelona.</p>
+      <p>Camisetas de fútbol con biografía. Barcelona.</p>
     </div>
     <div class="pie__col">
       <p class="mono">Escríbenos</p>

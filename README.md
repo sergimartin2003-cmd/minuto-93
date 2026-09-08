@@ -1,6 +1,6 @@
 # MINUTO 93
 
-Tienda de zapatillas y camisetas de fútbol de segunda mano. Web estática: sin
+Tienda de camisetas de fútbol de segunda mano. Web estática: sin
 build, sin npm, sin backend. Se abre con doble clic o se arrastra a cualquier
 hosting.
 
@@ -9,10 +9,12 @@ real y su tallaje medido, y se reserva hablando: email o WhatsApp.
 
 ## Qué hace
 
-- **Archivo** de piezas con filtros por tipo y ficha a pantalla completa.
-- **Tallaje propio por producto**: talla EU y plantilla en cm para zapas, pecho
-  × largo para camisetas. Las tallas agotadas se muestran tachadas, no se
-  esconden.
+- **Archivo** de piezas con ficha a pantalla completa y filtros por categoría
+  (local, visitante, portero, entreno) que se generan solos a partir de las
+  piezas que hay en el catálogo.
+- **Tallaje real**: pecho × largo medidos sobre la prenda en plano, más la nota
+  de tallaje propia de cada pieza. Las tallas agotadas se muestran tachadas, no
+  se esconden.
 - **Vista 3D** generada desde la propia foto: separa la pieza del fondo, levanta
   la silueta y le añade relieve según la luz. Es una malla real de Three.js que
   se gira con el dedo, no un vídeo.

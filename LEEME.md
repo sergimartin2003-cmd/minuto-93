@@ -1,7 +1,8 @@
 # MINUTO 93 — tu tienda
 
-Web estática de zapas y camisetas de fútbol. Sin carrito: cada pieza tiene ficha,
-fotos, vista 3D, tallaje propio y un botón para pedirla por email o WhatsApp.
+Web estática de camisetas de fútbol de segunda mano. Sin carrito: cada pieza
+tiene ficha, fotos, vista 3D, sus medidas y un botón para pedirla por email o
+WhatsApp.
 
 Carpeta: `C:\Users\sergi\minuto93`
 
@@ -89,8 +90,10 @@ volver a subir el archivo. Dímelo y te lo dejo puesto.
 Dentro tienes tres pestañas:
 
 - **Piezas** — añadir, editar y borrar. Nombre y precio son obligatorios, y hace
-  falta al menos una foto (la ficha y el 3D la necesitan). Las tallas se ponen
-  con los botones `+ 42`, `+ L`, etc., y a cada una le indicas cuántas unidades
+  falta al menos una foto (la ficha y el 3D la necesitan). Cada pieza va en una
+  categoría (local, visitante, portero, entreno): los filtros de la web se
+  construyen solos con las categorías que tengan piezas. Las tallas se ponen con
+  los botones `+ M`, `+ L`, etc., y a cada una le indicas cuántas unidades
   tienes. Talla con 0 unidades sale tachada en la ficha, no desaparece: así el
   cliente ve que existía.
 - **Buzón** — todo lo que la gente pide desde la web. Puedes responder por

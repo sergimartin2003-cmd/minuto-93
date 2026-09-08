@@ -75,11 +75,32 @@
     if (window.ScrollTrigger) { try { ScrollTrigger.refresh(); } catch (e) { /* nada */ } }
   }
 
-  function initFiltros() {
-    U.$$("[data-filtro]").forEach(function (b) {
+  /* Los filtros se construyen con las categorías que de verdad tienen
+     piezas, así que añadir o quitar una en el admin los actualiza solo. */
+  function montarFiltros() {
+    var caja = U.$("[data-filtros]");
+    if (!caja) return;
+
+    var lista = M93.store.productos();
+    var usadas = {};
+    lista.forEach(function (p) { if (p.tipo) usadas[p.tipo] = true; });
+
+    var cats = (marca.categorias || []).filter(function (c) { return usadas[c.clave]; });
+    if (!cats.length) { caja.innerHTML = ""; return; }
+    if (!usadas[filtroActual]) filtroActual = "todo";
+
+    caja.innerHTML =
+      '<button type="button" class="chip' + (filtroActual === "todo" ? " is-activo" : "") + '" data-filtro="todo">Todo</button>' +
+      cats.map(function (c) {
+        return '<button type="button" class="chip' + (filtroActual === c.clave ? " is-activo" : "") +
+          '" data-filtro="' + U.esc(c.clave) + '">' + U.esc(c.etiqueta) + "</button>";
+      }).join("") +
+      '<span class="filtros__cuenta mono" data-cuenta></span>';
+
+    U.$$("[data-filtro]", caja).forEach(function (b) {
       b.addEventListener("click", function () {
         filtroActual = b.dataset.filtro;
-        U.$$("[data-filtro]").forEach(function (o) { o.classList.toggle("is-activo", o === b); });
+        U.$$("[data-filtro]", caja).forEach(function (o) { o.classList.toggle("is-activo", o === b); });
         repintarArchivo();
       });
     });
@@ -91,26 +112,27 @@
 
   function montarGuias() {
     var caja = U.$("[data-guias]");
-    if (!caja) return;
-    var guias = marca.guias || {};
-    var html = ["zapas", "camiseta"].map(function (clave) {
-      var g = guias[clave];
-      if (!g) return "";
-      return (
-        '<div class="tabla">' +
-          "<h3>" + U.esc(g.titulo) + "</h3>" +
-          "<p>" + U.esc(g.nota) + "</p>" +
-          "<table><thead><tr><th>Talla</th><th>" +
-            (clave === "camiseta" ? "Pecho × largo" : "Plantilla") +
-          "</th></tr></thead><tbody>" +
-          g.filas.map(function (f) {
-            return "<tr><td>" + U.esc(f.talla) + "</td><td>" + U.esc(f.cm) + "</td></tr>";
-          }).join("") +
-          "</tbody></table>" +
-        "</div>"
-      );
-    }).join("");
-    caja.innerHTML = html;
+    var g = marca.guia;
+    if (!caja || !g) return;
+    caja.innerHTML =
+      '<div class="tabla">' +
+        "<h3>" + U.esc(g.titulo) + "</h3>" +
+        "<p>" + U.esc(g.nota) + "</p>" +
+        "<table><thead><tr><th>Talla</th><th>Pecho × largo</th></tr></thead><tbody>" +
+        g.filas.map(function (f) {
+          return "<tr><td>" + U.esc(f.talla) + "</td><td>" + U.esc(f.cm) + "</td></tr>";
+        }).join("") +
+        "</tbody></table>" +
+      "</div>" +
+      '<div class="tabla tabla--nota">' +
+        "<h3>Cómo medir la tuya</h3>" +
+        "<p>Coge una camiseta que te siente como quieres que te siente ésta y ponla en plano " +
+        "sobre la cama, sin estirar. Mide el pecho de costura a costura por debajo de la manga " +
+        "y el largo desde el punto más alto del hombro hasta el bajo. Compara esos dos números " +
+        "con la tabla y con las medidas de la ficha.</p>" +
+        "<p>Cada pieza tiene además su propia nota de tallaje: una camiseta de portero de los 90 " +
+        "nunca talla como una de campo, y una de los 2000 tampoco talla como una de ahora.</p>" +
+      "</div>";
   }
 
   /* =============================================================
@@ -125,8 +147,8 @@
       ? lista.map(function (q) {
           return (
             "<li><p>" + U.esc(q.pieza) + "</p>" +
-            '<span class="mono">' + U.esc(q.nombre || "anónimo") + " · " +
-            U.esc(q.tipo === "camiseta" ? "camiseta" : q.tipo === "zapas" ? "zapas" : "otro") +
+            '<span class="mono">' + U.esc(q.nombre || "anónimo") +
+            (q.tipo ? " · " + U.esc(U.etiquetaTipo(q.tipo)) : "") +
             (q.talla ? " · " + U.esc(q.talla) : "") + "</span></li>"
           );
         }).join("")
@@ -337,7 +359,7 @@
 
     // La primera cifra es el número real de piezas del archivo
     var primero = nodos[0];
-    if (primero && primero.dataset.contador === "8") {
+    if (primero && primero.dataset.contador === "5") {
       primero.dataset.contador = String(M93.store.productos().length);
     }
 
@@ -436,15 +458,20 @@
      ARRANQUE
      ============================================================= */
 
-  M93.app = { repintarArchivo: repintarArchivo, repintarMuro: repintarMuro };
+  function repintarTodo() {
+    montarFiltros();
+    repintarArchivo();
+  }
+
+  M93.app = { repintarArchivo: repintarTodo, repintarMuro: repintarMuro };
 
   function arrancar() {
     safe(initSplash, "initSplash");
     safe(initImagenesRotas, "initImagenesRotas");
     safe(montarGuias, "montarGuias");
+    safe(montarFiltros, "montarFiltros");
     safe(repintarArchivo, "repintarArchivo");
     safe(repintarMuro, "repintarMuro");
-    safe(initFiltros, "initFiltros");
     safe(initFormulario, "initFormulario");
     safe(initNav, "initNav");
     safe(initAnclas, "initAnclas");
@@ -468,7 +495,7 @@
     // hay que volver a pintar para que aparezcan.
     if (M93.store && M93.store.hidratar) {
       M93.store.hidratar().then(function () {
-        safe(repintarArchivo, "repintarArchivo(hidratado)");
+        safe(repintarTodo, "repintar(hidratado)");
         safe(initEnlaceDirecto, "initEnlaceDirecto");
       });
     } else {
