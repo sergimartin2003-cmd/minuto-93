@@ -1,0 +1,7 @@
+# Normaliza los saltos de línea: LF en el repositorio, lo que toque en tu disco
+* text=auto eol=lf
+
+*.webp binary
+*.jpg  binary
+*.png  binary
+*.ico  binary
