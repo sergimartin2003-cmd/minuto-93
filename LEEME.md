@@ -27,14 +27,38 @@ modo admin **sí** generan relieve completo también con doble clic.
 
 ## 2. Subirla a internet
 
-Arrastra **todo el contenido de la carpeta** (incluido el archivo oculto
-`.htaccess`) a `public_html` en Hostinger, o suelta la carpeta entera en
-Netlify. No hay que instalar ni compilar nada.
+El proyecto está en GitHub: <https://github.com/sergimartin2003-cmd/minuto-93>
 
-Cada vez que cambies `styles.css`, `main.js` o algo de `lib/`, sube el archivo y
-cambia la fecha del final de las etiquetas del `index.html`
-(`?v=20260908` → `?v=20260910`). Eso obliga al navegador a coger la versión
-nueva en vez de la guardada en caché.
+### Vercel (lo más cómodo)
+
+1. Entra en <https://vercel.com/new> con tu cuenta de GitHub.
+2. Elige el repositorio **minuto-93** → *Import*.
+3. En *Framework Preset* deja **Other**. No toques *Build Command* ni
+   *Output Directory*: no hay nada que compilar.
+4. *Deploy*. En menos de un minuto tienes la URL.
+
+A partir de ahí, **cada `git push` publica sola la versión nueva**. Para un
+dominio propio: *Settings → Domains* en el proyecto de Vercel.
+
+La configuración ya está puesta en `vercel.json`: cabeceras de seguridad, un día
+de caché para las fotos y revalidación en cada visita para el HTML, el CSS y el
+JS (así nunca se queda pillada una versión vieja al actualizar). El archivo
+`.vercelignore` evita subir las fotos originales sin comprimir, que no hacen
+falta en el hosting.
+
+### Hostinger u otro alojamiento clásico
+
+Arrastra **todo el contenido de la carpeta** (incluido el archivo oculto
+`.htaccess`) a `public_html`. No hay que instalar ni compilar nada.
+
+Ahí sí hace falta el truco de la caché: cada vez que cambies `styles.css`,
+`main.js` o algo de `lib/`, sube el archivo y cambia la fecha del final de las
+etiquetas del `index.html` (`?v=20260908` → `?v=20260910`). Eso obliga al
+navegador a coger la versión nueva. En Vercel esto no es necesario —lo hace
+solo— pero dejarlo puesto no molesta.
+
+> `.htaccess` sólo lo entienden Apache y LiteSpeed (Hostinger). En Vercel se
+> ignora: su equivalente es `vercel.json`. En GitHub Pages no hay equivalente.
 
 ---
 
@@ -150,6 +174,8 @@ piezas nuevas.
 
 ```
 index.html          La web entera (una sola página)
+vercel.json         Configuración para desplegar en Vercel
+.vercelignore       Lo que no hace falta subir a Vercel
 styles.css          Todo el diseño
 main.js             Arranque: monta el archivo, el tallaje, el buzón y los efectos
 lib/manifest.js     TUS DATOS: marca, contacto, tallajes y catálogo de fábrica

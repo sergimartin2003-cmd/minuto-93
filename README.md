@@ -34,6 +34,18 @@ Y abrir `http://localhost:8765`. Con doble clic en `index.html` funciona todo
 menos el relieve del 3D: el navegador no deja leer los píxeles de las fotos
 locales.
 
+## Cómo publicarla
+
+**Vercel:** entra en <https://vercel.com/new>, importa este repositorio, deja el
+*Framework Preset* en **Other** y pulsa *Deploy*. No hay build ni dependencias
+que instalar. A partir de ahí cada `git push` publica la versión nueva sola.
+
+La configuración de cabeceras y caché ya está en `vercel.json`, y
+`.vercelignore` deja fuera las fotos originales sin comprimir.
+
+**Hostinger o similar:** arrastra el contenido de la carpeta a `public_html`,
+incluido el `.htaccess` (que es el equivalente de `vercel.json` para Apache).
+
 ## Documentación
 
 Todo lo demás —modo admin, dónde se guardan los datos, cómo cambiar textos y
@@ -43,6 +55,7 @@ colores, cómo publicarla— está en **[LEEME.md](LEEME.md)**.
 
 ```
 index.html          La web entera (una sola página)
+vercel.json         Cabeceras y caché para el despliegue en Vercel
 styles.css          Diseño
 main.js             Arranque y efectos
 lib/manifest.js     Marca, contacto, tallajes y catálogo de fábrica
